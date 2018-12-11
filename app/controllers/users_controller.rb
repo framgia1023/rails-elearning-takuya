@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:new, :create]
-
   def new
     @user = User.new
   end
@@ -14,17 +12,32 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-  def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation)
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
-  def require_login
-    #false
-    unless logged_in?
-    flash[:info] = "Please login to gain access."
-    redirect_to login_url
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Successfully updated profile."
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :img, :img_cache, :remove_img)
+  end
+
 
 end
