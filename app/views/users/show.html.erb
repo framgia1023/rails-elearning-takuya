@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <% if @user.img? %>
+                    <%= image_tag @user.img.url, :class => "radius"  %>
+                <% else %>
+                    <%= image_tag "default.jpeg", :class => "radius" %>
+                <% end %>
+                <h1><%= @user.name %></h1>
+                <%= @user.email %>
+                <section class="stats">
+                    <%= render 'users/stats' %>
+                </section>
+                <div>
+                    <% unless current_user?(@user) %>
+                        <div id="follow-form">
+                            <% if current_user.following?(@user) %>
+                                <%= render 'unfollow',user: @user %>
+                            <% else %>
+                                <%= render 'follow',user: @user %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
