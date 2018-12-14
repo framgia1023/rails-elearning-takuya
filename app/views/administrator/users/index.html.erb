@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Admin Management</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Email Address</th>
+                        <th>Admin Settings</th>
+                    </tr>
+                </thead>
+                <% @users.each do |user| %>
+                    <tbody>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td>
+                                <% if !current_user?(user) %>
+                                    <% if !user.admin? %>
+                                        <%= link_to "Set Admin", administrator_user_path(user), method: :put, class: 'btn btn-info' %>
+                                    <% else %>
+                                        <%= link_to "remove", administrator_user_path(user), method: :delete, class: 'btn btn-danger' %>
+                                    <% end %>
+                                <% end %>
+                            </td>
+                        </tr>
+                    </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="text-center bordor-top pt-3">
+    <%= will_paginate %>
+</div>
