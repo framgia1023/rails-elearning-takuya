@@ -25,7 +25,7 @@
                         <%= link_to current_user.name, user_path(current_user), class: "dropdown-item" %>
                         <%= link_to "Profile", edit_user_path(current_user), class: "dropdown-item" %>
                         <%= link_to "Sign-out", logout_path, method: :delete, class: "dropdown-item" %>
-                        <% if current_user.admin? && !current_user?(@user) %>
+                        <% if current_user.admin? %>
                             <%= link_to "User Management", administrator_users_path, class: "dropdown-item" %>
                         <% end %>
                     </div>
