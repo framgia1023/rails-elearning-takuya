@@ -8,9 +8,10 @@ class Administrator::CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:success] = "Successfully Create Category."
-      redirect_to administrator_categories_path
+      redirect_to administrator_categories_url
     else
-      render 'new_administrator_category'
+      flash[:danger] = "Invaild Credentials."
+      render 'administrator/categories/new'
     end
   end
 
@@ -25,17 +26,18 @@ class Administrator::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(category_params)
-      flash[:success] = "Successfully updated Categories."
-      redirect_to administrator_categories_path
+      flash[:success] = "Successfully Updated Categories."
+      redirect_to administrator_categories_url
     else
-      render 'edit_administrator_category'
+      flash[:danger] = "Invaild Credentials."
+      render 'administrator/categories/edit'
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to administrator_categories_path
+    redirect_to administrator_categories_url
   end
 
   private
