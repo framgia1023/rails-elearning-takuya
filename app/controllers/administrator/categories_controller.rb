@@ -10,7 +10,6 @@ class Administrator::CategoriesController < ApplicationController
       flash[:success] = "Successfully Create Category."
       redirect_to administrator_categories_url
     else
-      flash[:danger] = "Invaild Credentials."
       render 'administrator/categories/new'
     end
   end
@@ -26,10 +25,9 @@ class Administrator::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(category_params)
-      flash[:success] = "Successfully Updated Categories."
+      flash[:success] = "Successfully Updated Category."
       redirect_to administrator_categories_url
     else
-      flash[:danger] = "Invaild Credentials."
       render 'administrator/categories/edit'
     end
   end
