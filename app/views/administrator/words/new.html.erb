@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h2 class="text-center">Words</h2>
+            <hr/>
+            <%= form_for @word, url: administrator_category_words_path, method: :post do |f| %>
+                <%= render 'shared/error_messages', object: f.object %>
+                <div class="form-group">
+                    <%= f.label :word %>
+                    <%= f.text_field :word, class: 'form-control' %>
+                </div>
+                <%= f.submit "Save Word", class: 'btn btn-primary btn-block' %>
+                <%= link_to "Back Words Index", administrator_category_words_path %>
+            <% end %>
+        </div>
+    </div>
+</div>

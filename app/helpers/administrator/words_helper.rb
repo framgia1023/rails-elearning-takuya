@@ -1,0 +1,2 @@
+module Administrator::WordsHelper
+end
