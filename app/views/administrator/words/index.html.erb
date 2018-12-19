@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Admin | Categories</h2>
+        </div>
+        <div class="col-lg-6">
+            <%= link_to "Add Word", new_administrator_category_word_path, class: 'btn btn-primary float-right ml-3' %>
+            <%= link_to "Back", administrator_categories_path, class: 'float-right' %>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Words</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <% @words.each do |word| %>
+                <tbody>
+                    <tr>
+                        <td><%= word.word %></td>
+                        <td></td>
+                        <td>
+                            <%= link_to "Edit", edit_administrator_category_word_path(@category, word), class: 'btn btn-info' %>
+                            <%= link_to "Remove", administrator_category_word_path(@category, word), method: :delete, class: 'btn btn-danger' %>
+                        </td>
+                    </tr>
+                </tbody>
+            <% end %>
+        </table>
+    </div>
+</div>
+
