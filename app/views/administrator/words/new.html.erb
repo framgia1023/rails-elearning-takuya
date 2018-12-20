@@ -3,13 +3,20 @@
         <div class="col-lg-6 offset-lg-3">
             <h2 class="text-center">Words</h2>
             <hr/>
-            <%= form_for @word, url: administrator_category_words_path, method: :post do |f| %>
+            <%= form_for [:administrator, :category, @word] do |f| %>
                 <%= render 'shared/error_messages', object: f.object %>
                 <div class="form-group">
                     <%= f.label :word %>
                     <%= f.text_field :word, class: 'form-control' %>
                 </div>
-                <%= f.submit "Save Word", class: 'btn btn-primary btn-block' %>
+                <%= f.fields_for :choices do |choice| %>
+                    <%= choice.label :choice %>
+                    <%= choice.text_field :choice, class: 'form-control' %>
+                    <div class="field">
+                        <%= choice.check_box :correct %>
+                    </div>
+                <% end %>
+                <%= f.submit "Save Word", class: 'btn btn-primary btn-block mt-4' %>
                 <%= link_to "Back Words Index", administrator_category_words_path %>
             <% end %>
         </div>

@@ -3,4 +3,5 @@ class Category < ApplicationRecord
   validates :description, presence: true
 
   has_many :words, dependent: :destroy
+  
 end

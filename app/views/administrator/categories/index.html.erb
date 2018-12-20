@@ -18,9 +18,9 @@
             <% @categories.each do |category| %>
                 <tbody>
                     <tr>
-                        <td><%= link_to category.title, administrator_category_words_path(category) %></td>
+                        <td><%= link_to category.title, administrator_category_words_path(category.id) %></td>
                         <td><%= category.description %></td>
-                        <td></td>
+                        <td><%= category.words.count %></td>
                         <td>
                             <%= link_to "Update", edit_administrator_category_path(category), class: 'btn btn-info' %>
                             <%= link_to "Delete", administrator_category_path(category), method: :delete, class: 'btn btn-danger' %>
