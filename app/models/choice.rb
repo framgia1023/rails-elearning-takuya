@@ -3,4 +3,6 @@ class Choice < ApplicationRecord
 
   validates :choice, presence: true
 
+  has_one :answer
+  
 end

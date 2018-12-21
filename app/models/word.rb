@@ -8,6 +8,8 @@ class Word < ApplicationRecord
 
   validate :check_choices
 
+  has_one :answer
+
   def correct
     choices.find_by(correct: true).choice
   end

@@ -9,7 +9,11 @@
                     <h2><%= category.title %></h2>
                     <small class="text-secondary"><%= category.description %></small>
                     <br/>
-                    <%= link_to "Show Results", "#", class: 'btn btn-light float-right' %>
+                    <%= form_for @lesson do |f| %>
+                        <%= hidden_field_tag :user_id, current_user.id %>
+                        <%= hidden_field_tag :category_id, category.id %>
+                        <%= f.submit "Learn", class: 'btn btn-secondary float-right'%>
+                    <% end %>
                 </div>
             </div>
         <% end %>
