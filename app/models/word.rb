@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :category
+  belongs_to :lesson, optional: true
 
   validates :word, presence: true
 
@@ -7,6 +8,8 @@ class Word < ApplicationRecord
   accepts_nested_attributes_for :choices
 
   validate :check_choices
+
+  has_many :answer
 
   def correct
     choices.find_by(correct: true).choice

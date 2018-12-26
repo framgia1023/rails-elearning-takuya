@@ -3,5 +3,6 @@ class Category < ApplicationRecord
   validates :description, presence: true
 
   has_many :words, dependent: :destroy
-  
+
+  has_many :lessons, dependent: :destroy
 end
