@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :category
+  belongs_to :lesson, optional: true
 
   validates :word, presence: true
 
@@ -8,7 +9,7 @@ class Word < ApplicationRecord
 
   validate :check_choices
 
-  has_one :answer
+  has_many :answer
 
   def correct
     choices.find_by(correct: true).choice

@@ -3,7 +3,7 @@
         <div class="col-lg-6 offset-lg-3">
             <h2 class="text-center">Words</h2>
             <hr/>
-            <%= form_for [:administrator, @category ,@word] do |f| %>
+            <%= form_for [:administrator, @category, @word] do |f| %>
                 <%= render 'shared/error_messages', object: f.object %>
                 <div class="form-group">
                     <%= f.label :word %>
