@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Following Members</h2>
+    </div>
+    <% @following_users.each do |following_user| %>
+        <div class="col-lg-6">
+            <div class="media mb-3">
+                <div class="align-self-center mr-3 border">
+                    <div class="media-body">
+                        <h4><%= link_to following_user.name, following_user %></h4>
+                        <% if following_user.img? %>
+                            <%= image_tag user.img.url, :class => "radius"  %>
+                        <% else %>
+                            <%= image_tag "default.jpeg", :class => "radius" %>
+                        <% end %>
+                        <% unless current_user?(following_user) %>
+                            <div id="follow-form">
+                                <% if current_user.following?(following_user) %>
+                                    <%= form_for(current_user.active_relationships.find_by(followed_id: following_user.id), html: {method: :delete}) do |f| %>
+                                    <%= f.submit "Unfollow", class: 'btn btn-danger btn-block mt-3' %>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

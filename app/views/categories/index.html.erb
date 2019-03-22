@@ -21,12 +21,10 @@
                     <%= form_for @lesson do |f| %>
                         <%= f.hidden_field :user_id, value: current_user.id %>
                         <%= f.hidden_field :category_id, value: category.id %>
-                        <% if checklearn(category).nil? %>
-                            <%= f.submit "Learn", class: 'btn btn-secondary float-right'%>
-                        <% elsif checklearn(category).result.nil? %>
+                        <% if checklearn(category).nil? || checklearn(category).result.nil? %>
                             <%= f.submit "Learn", class: 'btn btn-secondary float-right'%>
                         <% else %>
-                            <%= link_to "Show Result", lesson_url(category.lessons.ids), class: 'btn btn-light float-right' %>
+                            <%= link_to "Show Result", lesson_url(current_user.lessons.last.id), class: 'btn btn-light float-right' %>
                         <% end %>
                     <% end %>
                 </div>
