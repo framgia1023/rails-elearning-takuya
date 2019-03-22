@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <% if @user.img? %>
+                    <%= image_tag @user.img.url, :class => "radius"  %>
+                <% else %>
+                    <%= image_tag "default.jpeg", :class => "radius" %>
+                <% end %>
+                <h2><%= @user.name %></h2>
+                <%= @user.email %>
+                <hr/>
+                <section class="stats">
+                    <%= render 'users/stats' %>
+                </section>
+                <hr/>
+                <%= link_to "Learned words", user_words_path(@user) %>
+                <div>
+                    <% unless current_user?(@user) %>
+                        <div id="follow-form">
+                            <% if current_user.following?(@user) %>
+                                <%= render 'users/unfollow',user: @user %>
+                            <% else %>
+                                <%= render 'users/follow',user: @user %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <table class="table text-center">
+            <thead>
+                <th>Word</th>
+                <th>Correct Answer</th>
+                <th>Answer</th>
+                <th>Result</th>
+            </thead>
+            <% @answers.each do |answer| %>
+                <tbody>
+                    <td><%= answer.word.word %></td>
+                    <td><%= answer.word.choices.find_by(correct: true).choice %></td>
+                    <td><%= answer.choice.choice %></td>
+                    <% if answer.word.choices.find_by(correct: true).choice == answer.choice.choice %>
+                        <td><%= fa_icon 'check-circle' %></td>
+                    <% else %>
+                        <td><%= fa_icon 'times-circle' %></td>
+                    <% end %>
+                </tbody>
+            <% end %>
+        </table>
+    </div>
+</div>

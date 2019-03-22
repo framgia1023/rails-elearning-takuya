@@ -11,7 +11,7 @@
                 <%= @user.email %>
                 <hr/>
                 <section class="stats">
-                    <%= render 'users/stats' %>
+                    <%= render 'stats' %>
                 </section>
                 <hr/>
                 <%= link_to "Learned words", user_words_path(@user) %>
@@ -42,7 +42,7 @@
                                 <%= link_to activity.action.follower.name, activity.action.follower %> followed
                                 <%= link_to activity.action.followed.name, activity.action.followed %> .
                             </li>
-                            <hr/>                            
+                            <hr/>
                         <% else %>
                             <li>
                                 <%= link_to activity.action.user.name, activity.action.user %> learned
