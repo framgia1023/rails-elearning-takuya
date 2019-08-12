@@ -1,24 +1,11 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+
+# Rails Eラーニングシステム
+## 機能
+#### 一般ユーザー
+* 用意された選択肢の中から正答を選び回答します。
+* フォロー機能があり、自分や他ユーザーのアクティビティを閲覧できます。
+#### 管理者
+* 管理者権限により、ユーザーの管理（アカウント削除など）や問題の作成が可能です。
+## 環境
+* Ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-darwin17]
+* Rails 5.2.2
