@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter:  postgresql
   database: rails-elearning-takuya_production
   username: rails-elearning-takuya
   password: <%= ENV['RAILS-ELEARNING-TAKUYA_DATABASE_PASSWORD'] %>

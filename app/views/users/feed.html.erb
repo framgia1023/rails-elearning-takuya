@@ -3,9 +3,9 @@
         <div class="card mb-3">
             <div class="card-body text-center">
                 <% if @user.img? %>
-                    <%= image_tag @user.img.url, :class => "radius"  %>
+                    <%= image_tag @user.img.url, :size => "120x120"  %>
                 <% else %>
-                    <%= image_tag "default.jpeg", :class => "radius" %>
+                    <%= image_tag "default.jpg", :size => "120x120" %>
                 <% end %>
                 <h2><%= @user.name %></h2>
                 <%= @user.email %>
